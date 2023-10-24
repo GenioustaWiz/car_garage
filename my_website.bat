@@ -1,0 +1,1 @@
+start E:\Documents\projects\Python_Projects\Django\car_garage\venv\Scripts\activate
