@@ -6,14 +6,91 @@
 {% endblock title %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}" type="text/css">
+<style>
+  .description--page {
+    /*background-image: url('{{ background_image_url }}'); For dynamic BG image*/ 
+    background-image: url("{% static 'images/PnP_Auto_background_image.jpg' %}");
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-position: center; /* Center the background image within the container */
+    min-height: 200px;
+    padding-bottom: 100px;
+    position: relative;
+  }
+  
+  /*fOR ENFORCING BLUR ON THE IMAGE*/
+  .description--page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: inherit;
+    background: inherit;
+    filter: blur(90px);
+  }
+  .des-p{
+    position: inherit;
+  }
+</style>
 {% endblock css %}
 
 {% block content %}
+<section class=" description"> <!-- s2 -->
+  <div id="description-page" class="description-page description--page">
+      <div class="item2 des-p text-center container">
+          <div>
+            <h1 id="typewriter"> 
+              {{info.heading}} 
+              <!-- Fast, efficient and result Oriented -->
+            </h1>
+            <script>
+              // Get the heading text from Django context
+              var headingText = "{{ info.heading }}";
+          
+              // Get the target element where the typewriter effect will be displayed
+              var typewriterElement = document.getElementById('typewriter');
+          
+              // Function to display the typewriter effect
+              function typewriterEffect(text, i, speed) {
+                  if (i < text.length) {
+                      typewriterElement.innerHTML = text.substring(0, i + 1) + '<span class="wrap">|</span>';
+                      setTimeout(function () {
+                          typewriterEffect(text, i + 1, speed);
+                      }, speed);
+                  } else {
+                      // Pause for a certain duration at the end of the message
+                      setTimeout(function () {
+                          // Clear the typewriter effect
+                          typewriterElement.innerHTML = '';
+                          // Restart the typewriter effect after a delay
+                          setTimeout(function () {
+                              typewriterEffect(text, 0, speed);
+                          }, 1000); // Adjust the delay duration (in milliseconds) before restarting
+                      }, 2000); // Adjust the pause duration (in milliseconds) after the message ends
+                  }
+              }
+          
+              // Start the typewriter effect
+              typewriterEffect(headingText, 0, 100); // Adjust the speed (in milliseconds) as needed
+            </script> 
+          </div>
+          <div class="des-p-p">
+            <p>
+              {% comment %} {{info.body}} {% endcomment %}
+                <!-- Do you have an idea,TEKNICS Technologies is here to help you turn that idea
+                into a reality. We build and deploy Web Apps, Websites, Computer Softwares and Mobile Apps. You name it We do it.     -->
+            </p>
+          </div>
+          <button class="text-center book-button" type="submit">Let's Consult</button>
+      </div>
+  </div> 
+</section> 
 
-<section class="appointment">
-    <h2>Book an Appointment</h2>
-    <p>Choose a date and time that suits you.</p>
-    <button class="book-button">Book Now</button>
-</section>
+{% comment %} {% include 'home_page_includes/about.html' %} 
+
+{% include 'home_page_includes/services.html' %}  {% endcomment %}
+
 
 {% endblock content %}
