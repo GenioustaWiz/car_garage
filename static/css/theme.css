@@ -2,6 +2,8 @@
 [data-theme="dark"] {
     --bg-color: #1e1e1e;
     --text-color: #fff;
+    --inverted-bg-color: #f5f5f5;
+    --inverted-text-color: #333;
     --primary-color: #333;
     --accent-color: #f4ca0e;
     --accent-color-hover: #ffff00;
@@ -15,6 +17,8 @@
 [data-theme="light"] {
     --bg-color: #f5f5f5;
     --text-color: #333;
+    --inverted-bg-color: #1e1e1e;
+    --inverted-text-color: #fff;
     --primary-color: #000;
     --accent-color: #f4ca0e;
     --accent-color-hover: #ffff00;

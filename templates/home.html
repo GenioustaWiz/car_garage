@@ -7,13 +7,14 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}" type="text/css">
+
 <style>
   .description--page {
     /*background-image: url('{{ background_image_url }}'); For dynamic BG image*/ 
     background-image: url("{% static 'images/PnP_Auto_background_image.jpg' %}");
-    background-size: cover; /* Scale the background image to cover the entire container */
+    /*background-size: cover;  Scale the background image to cover the entire container */
     background-position: center; /* Center the background image within the container */
-    min-height: 200px;
+    min-height: 89vh;
     padding-bottom: 100px;
     position: relative;
   }
@@ -27,8 +28,9 @@
     bottom: 0;
     width: 100%;
     height: inherit;
-    background: inherit;
-    filter: blur(90px);
+    background: var(--bg-color);
+    /*filter: blur(90px);*/
+    opacity: 0.8;
   }
   .des-p{
     position: inherit;
@@ -78,12 +80,42 @@
           </div>
           <div class="des-p-p">
             <p>
-              {% comment %} {{info.body}} {% endcomment %}
+               {{info.body}}
                 <!-- Do you have an idea,TEKNICS Technologies is here to help you turn that idea
                 into a reality. We build and deploy Web Apps, Websites, Computer Softwares and Mobile Apps. You name it We do it.     -->
             </p>
           </div>
           <button class="text-center book-button" type="submit">Let's Consult</button>
+      </div>
+      <div class="frontP-cards">
+							
+        <div class="counter">
+          <img src="{% static 'images/homepage_icons/icon-car.png' %}" class="counter-icon">
+          <h3 class="counter-num">1500</h3>
+          <small class="counter-label">car repaired</small>
+        </div>
+        
+        
+        <div class="counter">
+          <img src="{% static 'images/homepage_icons/icon-wrench.png'%}" class="counter-icon">
+          <h3 class="counter-num">5000</h3>
+          <small class="counter-label">diagnoses</small>
+        </div>
+        
+        
+        <div class="counter">
+          <img src="{% static 'images/homepage_icons/icon-gears.png'%}" class="counter-icon">
+          <h3 class="counter-num">6000</h3>
+          <small class="counter-label">gears changed</small>
+        </div>
+        
+        
+        <div class="counter last">
+          <img src="{% static 'images/homepage_icons/icon-oil.png'%}" class="counter-icon">
+          <h3 class="counter-num">1200</h3>
+          <small class="counter-label">oil litres used</small>
+        </div>
+        
       </div>
   </div> 
 </section> 

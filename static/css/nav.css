@@ -118,13 +118,13 @@ static/
   text-decoration: none;
   padding: 12px 15px;
   transition: transform 0.3s;
-  color: white;
+  color:var(--accent-color);
   margin: 10px 2px;
 }
 /* IDEA: Putting spae btwn icons and text */
 .nav__link > i{
   margin-right: 15px;
-  color: #a7ddd4;
+  color:var(--icon-bg-color);
   height: 20px;
   width: 20px;
 }
@@ -133,7 +133,10 @@ static/
 
 } */
 .nav__link:hover{
-  background: linear-gradient(to right, #396081 0%, #83ddca 100%);
+  color:var(--accent-color-hover);
+}
+.nav__link:hover i{
+  color:var(--icon-bg-color-hover);
 }
 .nav__overlay{
   z-index: 1000;
@@ -189,21 +192,13 @@ static/
     align-items: center;
     min-height: var(--header-height);
     z-index: 1000;
-    background-color: rgba(1, 2, 4, 0.7);
     grid-gap: 1em;
     padding: 0 10px;
     -webkit-box-shadow: -1px 4px 5px 0px rgba(209, 205, 209, 1);
     -moz-box-shadow: -1px 4px 5px 0px rgba(209, 205, 209, 1);
     box-shadow: -1px 4px 5px 0px rgba(209, 205, 209, 1);
   }
-  /* #logo{
-    grid-column: 1 /  span 2;
-  }
-  #navbar_d{
-    grid-column: 5 / span 5;
-  } */
   .user{
-    /* grid-column: 11/ span 2; */
     display: inline-flex;
     justify-content: right;
   }
@@ -231,13 +226,13 @@ static/
     
   }
   #links a{
-    color: azure;
+    color: var(--accent-color);
     font-size: 18px !important;
     font-weight: 500;
     text-decoration:  none;
   }
   #links a:hover{
-    color: rgb(185, 230, 230);
+    color: var(--accent-color-hover);
     font-family: "Open Sans" sans-serif;
     font-size: 18px;
   }

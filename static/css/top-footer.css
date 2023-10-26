@@ -3,7 +3,7 @@ ul{
 }
 .top-footer a{
     text-decoration: none;
-    color: #c3b5b5;
+    color: white;
     padding: 2px 4px;
     border-radius: 4px;
 }
@@ -17,8 +17,8 @@ ul{
     justify-content: center;
     padding-bottom: 70px;
     grid-auto-flow: dense; /*helps rearrange Item to fit well on grid*/
-    background-color: rgb(20, 19, 19);
-    color: #c3b5b5;
+    background-color: var(--primary-color);
+    color: white;
     padding-top: 20px;
     position: relative;
     z-index: 2;
@@ -52,6 +52,12 @@ ul{
     width: 35px;
 }
 #f-socialmedia ul li:hover{
-    background: grey;
+    background:var(--bg-color);
     
 }
+#f-socialmedia ul li a i{
+   color: var(--icon-bg-color);
+}
+#f-socialmedia ul li a:hover i{
+    color: var(--icon-bg-color-hove);
+ }

@@ -50,7 +50,7 @@ li{
   }
   .scroll-button {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     right: 20px;
     background-color: var(--icon-bg-color);
     padding: 1px 6px;
