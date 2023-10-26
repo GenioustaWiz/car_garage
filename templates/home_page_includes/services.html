@@ -9,31 +9,6 @@
 {{ form.media }}
 <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
 <style>
-    .services{
-      /*background-image: url('{{ background_image_url }}'); For dynamic BG image*/ 
-      background-image: url("{% static 'images/water_blue_4_BG.jpg' %}");
-      background-size: cover; /* Scale the background image to cover the entire container */
-      background-position: center; /* Center the background image within the container */
-      min-height: 200px;
-      /*padding-bottom: 100px;*/
-      position: relative;
-    }
-    /*fOR ENFORCING BLUR ON THE IMAGE*/
-    .services::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: inherit;
-        background: inherit;
-        filter: blur(90px);
-    }
-    .div1, .div2{
-        /* to help with blur of background image */
-        position: inherit;
-    }
     .service-- a{
         text-decoration:none;
     }
@@ -46,10 +21,12 @@
         <div class="service--">
             <a href="{% url 'services_offered' slug=category.slug %}">
                 <div class="service edit-icon-h">
-                    <div>{{ category.iconInput|safe }}</div>
-                    <h6 style="font-weight: 700;">
+                    <div>
+                        <img src="{{category.img_icon.url}}" width="110" height="100" alt="Image">
+                    </div>
+                    <h2 class="title">
                         {{ category.category_name }}
-                    </h6>
+                    </h2>
                     <p>
                         {{ category.cat_description }} 
                     </p>

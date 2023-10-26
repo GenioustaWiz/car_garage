@@ -1,6 +1,8 @@
 /* Dark Mode */
 [data-theme="dark"] {
     --bg-color: #1e1e1e;
+    --odd-bg-color:#151010;
+    --even-bg-color:#494747;
     --text-color: #fff;
     --inverted-bg-color: #f5f5f5;
     --inverted-text-color: #333;
@@ -16,6 +18,8 @@
 /* Light Mode (default) */
 [data-theme="light"] {
     --bg-color: #f5f5f5;
+    --odd-bg-color:#e9e3e3;
+    --even-bg-color:#c2c1c1;
     --text-color: #333;
     --inverted-bg-color: #1e1e1e;
     --inverted-text-color: #fff;
