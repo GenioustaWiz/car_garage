@@ -14,7 +14,7 @@ class Appointment(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
 class ServiceCategory(models.Model):
-    category_name = models.CharField(default='Dental Services Cat-', max_length=200, null=False)
+    category_name = models.CharField(default='Engine services', max_length=200, null=False)
     cat_description = models.TextField(
         default='CaT- Lorem ipsum dolor sit amet, consectetur adipisicingpra esentium eveniet eum libero assumenda.',
         null=False

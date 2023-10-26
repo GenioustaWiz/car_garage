@@ -1,11 +1,12 @@
 
 import os
 from django.db import models
+from tinymce.models import HTMLField
 from PIL import Image
 desc = 'Please write the description here'
 class AboutPage(models.Model):
     heading = models.CharField(default='default', max_length=100, null=False)
-    body = models.TextField(default=desc, max_length=600, null=False)
+    body = HTMLField('Content')
 
     def save(self, *args, **kwargs):
         if AboutPage.objects.count() >= 1:
@@ -23,8 +24,8 @@ class AboutPage(models.Model):
     
 class AboutList(models.Model):
     title = models.CharField(default='default', max_length=100, null=False)
-    image = models.ImageField(upload_to='hospital_abt_images',blank=False, null=False)
-    
+    image = models.ImageField(upload_to='about_images',blank=False, null=False)
+    desc =  models.TextField(default=desc, max_length=600, null=False)
     def save(self, *args, **kwargs):
         super(AboutList, self).save(*args, **kwargs)
         

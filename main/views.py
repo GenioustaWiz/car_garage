@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models.models import *
+from .models.aboutP_M import *
 # Import hOSPITAL Services data
 from services.forms import *
 from services.models import *
@@ -45,8 +46,8 @@ def main_index(request):
         form4 = AppointmentForm4()
     ### SERVICES CODE ENDS HERE ###
     ### THE ABOUT PAGE CODE STARTS HER ###
-    # about_display= AboutPage.objects.first()
-    # about_list = AboutList.objects.all()
+    about_display= AboutPage.objects.first()
+    about_list = AboutList.objects.all()
     ### THE ABOUT PAGE CODE ENDS HERE ###
     context = {
         'info': info, 
@@ -60,8 +61,8 @@ def main_index(request):
         # -===============end============
         #ABOUT PAGE CONTEXT
         "user":request.user,
-        # 'about': about_display,
-        # 'about_list': about_list,
+        'about': about_display,
+        'about_list': about_list,
         #==========END====================
         
         }

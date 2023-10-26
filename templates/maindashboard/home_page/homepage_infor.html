@@ -1,0 +1,119 @@
+
+{% extends 'maindashboard/dashboard_base.html' %}
+{% comment %} displays Write  {% endcomment %}
+
+{% load static %}
+
+{% block title %} Blog List Page {% endblock title %}
+{% block css %}
+{{form.media}}
+<link rel="stylesheet" href="{% static 'css/blogdashboard/author/write_new_article.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}" type="text/css">
+<style>
+    .heading{
+        font-size: 20px;
+        background-color: azure;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        padding: 0 25px 0 5px;
+    }
+    .frontP-cards {
+        top: 0;
+        background-color: azure;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        margin: 0 15px;
+        gap: 4px;
+        padding-bottom: 20px;
+    }
+</style>
+{% endblock css %}
+{% block content %}
+ 
+
+<!-- Write New Articles -->
+<section class="item2 section write-A-page">
+    <div class="write-a-c bg--white">
+        <div id="w-a-heading">
+            <h2>Information displayed on the Home Page</h2>
+        </div>
+        <div class="content-body">
+        {% if home_page %}
+            <div class="heading edit-icon-h">
+                <h1>{{ home_page.heading }}</h1>
+                <div class="edit-icon">
+                    <a href="{% url 'edit_home_page' %}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </div>
+            </div>
+            {% comment %} <p>{{ home_page.body }}</p> {% endcomment %}
+        {% else %}
+            <p>No home page content available.</p>
+        {% endif %}
+        </div>
+        {% comment %} CARD 1 {% endcomment %}
+        <div class="frontP-cards">
+            <div class="f-card1 {{card1.color}} edit-icon-h">
+                {% if card1 %}
+                <div class="fa-icon">{{card1.iconInput|safe}}</div>
+                <h4>{{card1.heading}}</h4>
+                <p>
+                  {{ card1.body }}
+                </p>
+                {%else%}
+                <p> Information for card1 is not available.</p>
+                {%endif%}
+                <div class="edit-icon">
+                  <a href="{% url 'home_page_card1_form' %}">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
+                </div>
+            </div>
+            {% comment %} CARD 2 (WORKING HOURS) {% endcomment %}
+            <div class="f-card2 red edit-icon-h">
+             <div><i class="fa-icon fa-regular fa-clock"></i></div>
+                <h4>Working Hours</h4>
+                <ul>
+                  {% if workinghours %}
+                  {% for entry in workinghours %}
+                    <hr style="margin: 0.5rem 0; border-top: 3px dashed black; background: none;"> <!-- Solid divider -->
+                    <li>
+                      <span class="left">{{ entry.day }}</span><span class="right">{{ entry.opening_time|time:"H:i" }} – {{ entry.closing_time|time:"H:i" }}</span>
+                    </li>
+                    
+                      <hr style="margin: 0.5rem 0; border-top: 3px dashed black; background: none;">
+                    
+                  {% endfor %}
+                  {% else %}
+                  <p> working hours are not updated</p>
+                  {% endif %}
+                  
+                </ul>
+                <div class="edit-icon">
+                  <a href="{% url 'working_hours_form' %}">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
+                </div>
+            </div>
+            {% comment %} CARD 3 {% endcomment %}
+            <div class="f-card3 {{card3.color}} edit-icon-h">
+                {% if card3 %}
+                <div class="fa-icon">{{card3.iconInput|safe}}</div>
+                <h4>{{card3.heading}}</h4>
+                <p>
+                  {{ card3.body }}
+                </p>
+                {% else %}
+                <p> Information for card3 is not available.</p>
+                {% endif %}
+                <div class="edit-icon">
+                  <a href="{% url 'home_page_card3_form' %}">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
+                </div>
+            </div>
+          </div> 
+    </div>
+</section>
+        
+{% endblock content%}
