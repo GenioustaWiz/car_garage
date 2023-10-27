@@ -28,12 +28,14 @@ def about_list_edit(request, pk=None):
     if pk is not None:
         item = get_object_or_404(AboutList, pk=pk)
         image= item.image #
+        total_form_count = None
     else:
+        total_form_count = None
         item = None 
         image= None 
     # Assuming AboutListForm is your form class
     # WE USE *modelformset_factory* SO THAT WE CAN BE ABLE TO USE QUERYSET ON FORMSET
-    AboutListFormSet = modelformset_factory(AboutList, form=AboutListForm, extra=0)  # You can adjust 'extra' as needed
+    AboutListFormSet = modelformset_factory(AboutList, form=AboutListForm, extra=1)  # You can adjust 'extra' as needed
     
     if request.method == 'POST':
         print('==============ID================')
@@ -57,7 +59,8 @@ def about_list_edit(request, pk=None):
                 # print(items) 
                 for item in formset:
                     itemm = item.save(commit=False)
-                    print('==============instance================')
+                    # itemm.user = request.user
+                    print('==============instance================') 
                     print(item)  # Check if the form has valid data
                     itemm.save()  # Save the item to the database
                 # formset.save_m2m()  # Save many-to-many relationships if any
@@ -67,7 +70,7 @@ def about_list_edit(request, pk=None):
     else:
         if pk is not None: #FOR SAVING EDITED DATA ONLY
             formset =  AboutListForm(instance=item)
-            total_form_count = None
+            
         else: #FOR SAVING NEW DATA
             # Fetch the queryset based on the provided primary key (pk)
             queryset = AboutList.objects.filter(pk=pk) if pk is not None else AboutList.objects.none()

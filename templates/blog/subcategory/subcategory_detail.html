@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% comment %} displays blog lists and category lists {% endcomment %}
+
+{% load static %}
+
+{% block title %} Articles {% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/blog/blog_home.css' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'css/blog/blog_detail.css' %}"> {% endcomment %}
+
+{% endblock css %}
+
+{% block content %}
+<section class="post-list body-container">
+
+    {% comment %} BLOGS LIST DISPLAY {% endcomment %}
+    <div class="p-l-main item2 bg-white" id="main" >
+            {% comment %} <div class="article-heading">Available Articles </div>
+         {% endcomment %}
+            <div class="article-heading">
+              Search Results for <i style="color: red;font-weight: 700;"> {{subcategory}} </i>
+            </div>
+            {% if blogs %}
+            <div class="itme2 post-wrapper">
+              {% for article in blogs %}
+              <div>
+                  <div class="post">
+                      <a href="{{ article.get_absolute_url }}">
+                        <img class="thumbnail" src="{{ article.image.url }}">
+                      </a>
+                      <div class="post-preview">
+                          <p class="post-title ">
+                            <a href="{{ article.get_absolute_url }}">
+                            <b>{{ article.title|safe| truncatechars:50 }}</b>
+                          </a></p>
+                      </div>
+
+                      <ol class="post-footer">
+                        <li><i class="bi bi-clock-fill"></i>{{ article.read_time }}<i class="bi bi-book-half"></i></li>
+                        <li><i class="fa fa-comments"></i>{{ article.comment_count  }}</li>
+                        <li><i class="fa fa-eye"></i>{{ article.formatted_views_count }}</li>
+                      </ol>
+                  </div> 
+              </div>
+    
+              {% endfor %}
+          </div>
+            {% else %}
+                    <div class="centered alert alert-warning"><b>No Articles</b></div>
+                {% endif %}
+    </div> 
+    {% comment %} END OF BLOGS LIST DISPLAY {% endcomment %}
+    {% include 'blog/article/blog_side_bar.html' %}
+</section>
+{% endblock content %}
+
+{%block js%}
+{%endblock js%}

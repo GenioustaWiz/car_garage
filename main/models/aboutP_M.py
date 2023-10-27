@@ -1,6 +1,7 @@
 
 import os
 from django.db import models
+from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from PIL import Image
 desc = 'Please write the description here'
@@ -23,15 +24,17 @@ class AboutPage(models.Model):
         super(AboutPage, self).delete(*args, **kwargs)
     
 class AboutList(models.Model):
+    user =  models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(default='default', max_length=100, null=False)
     image = models.ImageField(upload_to='about_images',blank=False, null=False)
     desc =  models.TextField(default=desc, max_length=600, null=False)
+    
     def save(self, *args, **kwargs):
         super(AboutList, self).save(*args, **kwargs)
         
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
+            output_size = (300, 300) 
             img.thumbnail(output_size)
             img.save(self.image.path)
             
@@ -42,7 +45,12 @@ class AboutList(models.Model):
             os.remove(self.image.path)
         
         super(AboutList, self).delete(*args, **kwargs)
-
+    def user_full_name(self):
+        if self.user:
+            return f"{self.user.first_name} {self.user.last_name}"
+        return "P&P AUTO"
+    def __str__(self):
+        return self.title  # This is used for the model's string representation
     # @classmethod
     # def delete_multiple(cls, ids):
     #     # Delete multiple instances by their IDs

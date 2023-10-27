@@ -78,7 +78,7 @@
                 <a href="#">News</a>
                 {% comment %} <a href="{% url 'project_list' %}">Projects</a> {% endcomment %}
                 <a href="#">Contact</a>
-                {% comment %} {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                     <div class="dropdown dashboard">
                         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-layer-group"></i>
@@ -89,14 +89,11 @@
                             <li><a class="dropdown-item" href="{% url 'main_dashboard_home' %}">Main Dashboard</a></li>
                         </ul>
                     </div>
-                {% endif %} {% endcomment %}
+                {% endif %}
                 
             </div>
         </div> 
-        <button id="toggle-theme">
-            <span id="theme-icon"></span>
-        </button>
-        {% comment %} <div class="user nav-item dropdown dashboard">
+        <div class="user nav-item dropdown dashboard">
             {% if user.is_authenticated %}
 
             <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -116,7 +113,11 @@
             <a href="{% url 'login' %}"> <span>SignUp</span> </a>
             {%endif %}
 
-        </div> {% endcomment %}
+        </div> 
+        <button id="toggle-theme">
+            <span id="theme-icon"></span>
+        </button>
+         
     </header>
 
     <nav class="nav">
@@ -145,7 +146,7 @@
                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                 Contact
             </a>
-            {% comment %} {% if request.user.is_authenticated %}
+             {% if request.user.is_authenticated %}
                 <div class="dropdown dashboard">
                     <a href="#" class="nav__link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-layer-group"></i>
@@ -162,6 +163,10 @@
                 <i class="fa fa-address-card" aria-hidden="true"></i>
                 Profile
             </a>
+            <a href="{% url 'logout' %}" class="nav__link" > 
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                Logout
+            </a>
             {% else %}
             <a href="{% url 'login' %}" class="nav__link" > 
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -171,7 +176,7 @@
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                 SignUp 
             </a>
-            {%endif %} {% endcomment %}
+            {%endif %} 
         </div>
         <!--sidemenu Slider-->
         <div class="nav__overlay"></div>
@@ -248,7 +253,7 @@
     <script src="{% static 'js/ajax_common_data_get.js' %}"></script>
     <script src="{% static 'js/url_State.js' %}"></script>
     <script src="{% static 'js/Text_Resize.js' %}"></script>
-    <script src="{% static 'js/visitors_counter.js' %}"></script>
+    {% comment %} <script src="{% static 'js/visitors_counter.js' %}"></script> {% endcomment %}
     <script src="{% static 'js/theme.js' %}"></script>
     {% comment %} <script src="{% static 'js/theme.js' %}"></script> {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

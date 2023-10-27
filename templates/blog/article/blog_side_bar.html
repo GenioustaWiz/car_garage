@@ -1,0 +1,156 @@
+
+{% block css %}
+    <style>
+        .searched-article h3{
+            margin-bottom: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cate-author{
+            display: flex;
+        }
+        .cate-author p{
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+        .search-result{
+            padding: 0 4px;
+            cursor: pointer;
+        }
+        /* search-result is the mother and searched-article is the babies*/
+        /* we apply the even to the babies belonging to the mother*/
+        .search-result:nth-child(even) .searched-article {
+            background-color: #bac3d1a1;
+            color: #000;
+        }
+        .search-result .searched-article:hover{
+            background-color: azure;
+        }
+        .blog-item a{
+            text-decoration: none;
+        }
+        .blog-item:hover{
+            background-color: azure;
+        }
+    </style>
+{% endblock css %}
+    {% comment %} SIDE BAR {% endcomment %}
+    <div class="sidebar " id="side-bar">
+        <!--SEARCH-BAR -->
+        <div class="sidebar-block">
+            <h3 class="sidebar-title">Search</h3>
+            <!-- ==SCRIPT FOR SEARCHING -->
+            <script>
+                $(document).ready(function () {
+                    $('#search-input').on('input', function () {
+                        var query = $(this).val();
+                        $.ajax({
+                            url: '/news/blog_search/ajax_search/',
+                            data: { 'query': query },
+                            success: function (data) {
+                                var resultsDiv = $('#search-results');
+                                resultsDiv.empty();
+                
+                                $.each(data.articles, function (index, article) {
+                                    var articleDiv = $('<div class="searched-article"></div>');
+                                    var authCateDiv = $('<div class="cate-author"></div>');
+                                    var titleDiv = $('<h3 class="article-title"></h3>').text(article.title);
+                                    var authorDiv = $('<p class="article-author"></p>').text('Author: ' + article.author);
+                                    var categoryDiv = $('<p class="article-category"></p>').text('Category: ' + article.category);
+                
+                                    articleDiv.append(titleDiv);
+                                    authCateDiv.append(authorDiv);
+                                    authCateDiv.append(categoryDiv);
+                                    articleDiv.append(authCateDiv);
+                                    var resultItem = $('<div class="search-result" data-slug="' + article.slug + '"></div>');
+                                    resultItem.append(articleDiv);
+                
+                                    resultsDiv.append(resultItem);
+                                });
+                
+                                resultsDiv.show();
+                            }
+                        });
+                    });
+                    //when user click on the search results on the list dropdown, 
+                    //the id of the clicked item is retrieved and used to open the blog_detail.
+                    $(document).on('click', '.search-result', function () {
+                        var articleSlug = $(this).data('slug');
+                        window.location.href = '/news/open-dropeddown-article/' + articleSlug; // Redirect to the blog post detail page
+                        $('#search-results').hide();
+                    });
+                    //======= end =====
+                    // Hide the search results when clicking outside
+                    $(document).on('click', function (e) {
+                        if (!$(e.target).closest('.search-form').length) {
+                            $('#search-results').hide();
+                        }
+                    });
+                });
+            </script>
+            <!--==END OF SCRIPT FOR SEARCHING ====-->
+            <form class="search-form"  method="GET" action="/news/articles-available/">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search-input" name="query" placeholder="Type a keyword and hit enter">
+                    <button type="submit" class="btn"><span class="icon mai-search"></span></button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </form>
+        </div>
+        <!--END OF SEARCH-BAR-->
+        <!--DISPLAYING LIST OF Categories-->
+        <div class="sidebar-block">
+          {% if subcategories %}
+          <h3 class="sidebar-title">Subcategories</h3>
+          {% elif categories %}
+          <h3 class="sidebar-title">Categories</h3>
+          {% endif %}
+
+          <ul class="categories">
+            {% for category in categories %}
+            <li><a href="{{category.get_absolute_url }}">{{ category.name }}
+                <span>{{ category.blog_count }}</span>
+            </a></li>
+            {% empty %}
+            <li>No categories found.</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!--END OF LIST OF CATEGORIES-->
+        <!--FOR DISPLAYING MOST VIEWED BLOGS-->
+        <div class="sidebar-block">
+          <h3 class="sidebar-title">Recent Blog</h3>
+          {% for article in recent_articles %}
+          <div class="blog-item">
+            <a class="post-thumb" href="{{ article.get_absolute_url }}">
+              <img src="{{ article.image.url }}" alt="alt">
+            </a>
+            <div class="content">
+              <h3 class="post-title"><a href="{{ article.get_absolute_url }}">{{article.title}}</a></h3>
+              <div class="meta">
+                <a href="{{ article.get_absolute_url }}"><span class="mai-calendar"></span> {{ article.date_published|date:"F j, Y" }}</a>
+                <a href="{{ article.get_absolute_url }}"><span class="mai-person"></span> {{article.author}}</a>
+                <a href="{{ article.get_absolute_url }}"><span class="mai-chatbubbles"></span> {{ article.comment_count  }}</a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+            <li>No Recent articles found.</li>
+            {% endfor %}
+        </div>
+          <!--END OF MOST VIEW-->
+          <!--FOR DISPLAYING AVAILABLE TAGS-->
+          <div class="sidebar-block">
+            <h3 class="sidebar-title">Tag Cloud</h3>
+            <div class="tagcloud">
+                {% for tag in all_tags %}
+                <a href="{% url 'blog:tag_blogs' tag.slug %}" class="tag-cloud-link">{{ tag.name }}</a>
+                {% empty %}
+                <li class="tag-cloud-link">No tags found.</li>
+                {% endfor %}
+            </div>
+          </div>
+          <!--END OF TAGS-->
+        
+    </div>
+    {% comment %} END OF SIDE BAR {% endcomment %}

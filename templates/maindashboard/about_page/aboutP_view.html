@@ -35,13 +35,13 @@
             </div>
           </div>
           <div class="des-p-p edit-icon-h">
-            <p>
-              {{about_page.body}} 
+           
+              {{about_page.body|safe}} 
               <!-- CDT was created with the sole purpose of delivering sustainable, pocket friendly and 
               secure technologies to all people. Clients satisfaction is our main goal, 
               as we also advice and guide our clients on the best techonlogies for specific products.
               We provide different range of products from Web, Desktop, Mobile, Automation, and  Security applications. -->
-            </p>
+            
             <div class="edit-icon">
                 <a href="{% url 'about_page_edit' %}">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -57,7 +57,10 @@
         {% for item in about_list %}
         <div class="about--list">
           <img src="{{item.image.url}}" width="200" height="200" alt="">
-          <div class="bottom-name">{{item.title}}</div>
+          <div class="bottom-name">
+            <h3>{{ item.user_full_name }}</h3>
+            <p>{{item.title}}</p>
+          </div>
           <div class="edit-icon">
             <a href="{% url 'about_list_edit' pk=item.id %}">
                 <i class="fa-solid fa-pen-to-square"></i>
@@ -65,12 +68,13 @@
           </div> 
         </div>
         {% endfor %}
-        <div class="edit-icon add-icon">
-          <a href="{% url 'about_list_edit' %}">
-            <i class="bi bi-database-fill-add"></i>
-          </a>
-        </div>
+        
         {% else %}
+          <div class="edit-icon add-icon">
+            <a href="{% url 'about_list_edit' %}">
+              <i class="bi bi-database-fill-add"></i>
+            </a>
+          </div>
             <p> No Imformation Available </p>
         {% endif %}
       </div>           

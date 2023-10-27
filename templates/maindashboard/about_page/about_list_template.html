@@ -8,6 +8,9 @@
 {{form.media}}
 <link rel="stylesheet" href="{% static 'css/blogdashboard/author/write_new_article.css' %}"> 
 <style>
+    select{
+        display: block !important;
+    }
     input {
         height: fit-content !important;
     }
@@ -56,9 +59,19 @@
                     {% for form in formset %}
                     <div class="formset-row edit-icon-h">
                         <P>
+                            {{ form.user.label_tag }}
+                            {{ form.user }}
+                            {{ form.user.errors }} 
+                        </P>
+                        <P>
                             {{ form.title.label_tag }}
                             {{ form.title }}
                             {{ form.title.errors }} 
+                        </P>
+                        <P>
+                            {{ form.desc.label_tag }}
+                            {{ form.desc }}
+                            {{ form.desc.errors }} 
                         </P>
                         <div id="image-preview">
                             {{ form.image.label_tag }}
@@ -78,9 +91,19 @@
                 <div id="content-item-formset">
                     <div class="formset-row edit-icon-h">
                         <P>
+                            {{ formset.user.label_tag }}
+                            {{ formset.user }}
+                            {{ formset.user.errors }} 
+                        </P>
+                        <P>
                             {{ formset.title.label_tag }}
                             {{ formset.title }}
                             {{ formset.title.errors }} 
+                        </P>
+                        <P>
+                            {{ formset.desc.label_tag }}
+                            {{ formset.desc }}
+                            {{ formset.desc.errors }} 
                         </P>
                         <div id="image-preview">
                             {{ formset.image.label_tag }}
@@ -134,7 +157,11 @@
                         newRow.innerHTML = `
                             <p>
                                 <label for="id_form-${index}-title">Title:</label>
-                                <input type="text" name="form-${index}-title" value="default" maxlength="100" id="id_form-${index}-title">
+                                <input type="text" name="form-${index}-title" value="default" maxlength="100" id="id_form-${index}-desc">
+                            </p>
+                            <p>
+                                <label for="id_form-${index}-desc">Dsecription:</label>
+                                <textarea cols="40" rows="10" name="form-${index}-desc" value="default" maxlength="600" id="id_form-${index}-desc"></textarea>
                             </p>
                             <div id="image-preview">
                                 <label for="id_form-${index}-image">Image:</label>

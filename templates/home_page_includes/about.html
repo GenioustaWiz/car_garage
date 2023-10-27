@@ -9,22 +9,40 @@
 <link rel="stylesheet" href="{% static 'css/description.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/about.css' %}" type="text/css">
 {% comment %} <link rel="stylesheet" href="{% static 'css/extra.css' %}" type="text/css"> {% endcomment %}
+<style>
+  .des-p-p{
+    padding: 0 !important;
+  }
+</style>
 {% endblock css %}
 
  <section class=" description" id="ABOUT"> <!-- s2 -->
     <div id="description-page"  class=" container-xxl">
         <div class="item2 des-p text-center container">
-            <div style="background: linear-gradient(to right, #2d80c5 0%, #83ddca 100%); border-radius: 20px;">
+            <div style="color: var(--text-color);">
              <h1> {{about.heading}} <!--About us--></h1> 
         </div>
             <div class="des-p-p">
-            <p>
-              {{about.body}}
+              <!--some of the code that control the change of text-color are available in the theme.js code-->
+              {{about.body|safe}}
               <!-- CDT was created with the sole purpose of delivering sustainable, pocket friendly and 
               secure technologies to all people. Clients satisfaction is our main goal, 
               as we also advice and guide our clients on the best techonlogies for specific products.
               We provide different range of products from Web, Desktop, Mobile, Automation, and  Security applications. -->
-            </p>
+            <!-- IMPORTANT TO MAKE THEME COLOR CHANGE POSSIBLE FOR THESE BODY HTML CODE-->
+            <script>
+              // Find all elements with class "des-p-p"
+              const desPPElements = document.querySelectorAll('.des-p-p');
+
+              // Iterate through each "des-p-p" element and add the "theme-text" class to its child elements
+              desPPElements.forEach((element) => {
+                  const childElements = element.querySelectorAll('*');
+                  childElements.forEach((child) => {
+                      child.classList.add('theme-text');
+                  });
+              });
+            </script>
+            <!-- END IMPORTANT TO MAKE THEME COLOR CHANGE POSSIBLE FOR THESE BODY HTML CODE-->
         </div> 
         </div>
         <div class="dev text-center">
@@ -35,7 +53,10 @@
           {% for item in about_list %}
           <div class="about--list">
             <img src="{{item.image.url}}" width="200" height="200" alt="">
-            <div class="bottom-name">{{item.title}}</div>
+            <div class="bottom-name">
+              <h3>{{ item.user_full_name }}</h3>
+              <p>{{item.title}}</p>
+            </div>
           </div>
           {% endfor%}
         </div>     
