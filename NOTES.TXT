@@ -1,0 +1,7 @@
+REMEMBER TO INCLUDE THE JS LINKS FOR django-tinymce==3.6.1 IN THE HTML 
+template that the editor will be required. 
+this are the JS LINKS:"
+<script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'js/tinymce/tinymce_upload.js' %}"></script>
+"
+
