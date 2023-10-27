@@ -9,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User  # Import the User model if not already imported
 from django.shortcuts import render
 
-from hospital_blog.models.article_m import *
+from blog.models.article_m import *
 from visitors_counter.models import Visit
 @login_required
 def main_dashboard_home(request):

@@ -32,8 +32,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.AccountsConfig',
     'main',
     'services',
+    'blog',
+    'visitors_counter',
+    'contact_us',
     
     "django.contrib.admin",
     "django.contrib.auth",
@@ -41,6 +45,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
+    # Third Party Apps
+    'tinymce',
+    'django_cleanup', # overrides older images
+    'debug_toolbar',
+    'phonenumber_field',
+    'django_countries',
+    'taggit',
+    
 ]
 
 MIDDLEWARE = [
@@ -51,6 +64,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # New Added
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = "car_garage.urls"

@@ -24,9 +24,15 @@ admin.site.site_title = "Welcome to CDT Dashboard"
 admin.site.index_title = "Welcome to this Portal"
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path("admin/", admin.site.urls),
     path('', include('main.urls')),
+    path('users/', include('users.urls')),
+    path('accounts/', include("django.contrib.auth.urls")),
     path('services/', include('services.urls')),
+    path('blog/', include('blog.urls')),
+    path('contact_us/', include('contact_us.urls')),
+    path('', include('visitors_counter.urls')),
 ]
 # if settings.DEBUG:# Only add this when we in debug mode
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
