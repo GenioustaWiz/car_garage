@@ -1,5 +1,7 @@
 # for production
 whitenoise==6.2.0
+gunicorn==21.2.0
+
 # image processing
 Pillow==9.1.0
 # for phone numbers processing
