@@ -21,45 +21,37 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^6&3vnde7#2_*19h4-#t768*nz$52t=qqflcaad#@ce($e*p*b'
+SECRET_KEY = "django-insecure-p3z=#_sq=8fz4p2$#tgs6d=pl6l_(q^g^b5om493sn3v18yg6p"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['hospitalmanagementsystemweb-production.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = ['https://hospitalmanagementsystemweb-production.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = ['https://hospitalmanagementsystemweb-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
     'users.apps.AccountsConfig',
-    'hospital_website',
-    'hospital_management',
-    'contact_us',
-    'hospital_services',
-    'hospital_blog',
+    'main',
+    'services',
+    'blog',
     'visitors_counter',
-    """"""
-    # for changing adm,in app  side..pip install django-admin-soft-dashboard
-    # 'admin_soft.apps.AdminSoftDashboardConfig',
-    # pip install django-admin-material-dashboard
-    # 'admin_material.apps.AdminMaterialDashboardConfig',
-    """"""
+    'contact_us',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Third Party Apps.
-    'django_filters',
-    'rest_framework',
-    'taggit',
-    'debug_toolbar',
+    # Third Party Apps
     'tinymce',
+    'django_cleanup', # overrides older images
+    'debug_toolbar',
     'phonenumber_field',
     'django_countries',
-    'django_cleanup', # overrides older images
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'hospital_management_webapp.urls'
+ROOT_URLCONF = 'car_garage.urls'
 
 TEMPLATES = [
     {
@@ -94,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hospital_management_webapp.wsgi.application'
+WSGI_APPLICATION = 'car_garage.wsgi.application'
 
 
 # Database
@@ -132,7 +124,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Africa/Nairobi"
 
 USE_I18N = True
 

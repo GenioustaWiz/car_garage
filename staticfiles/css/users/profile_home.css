@@ -15,7 +15,8 @@ i{
 }
 
 .profile-main{ 
-    background-color: rgb(209, 213, 216);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     height: 100;
     display: grid;
     gap: 20px;
@@ -26,11 +27,11 @@ i{
     "info-area " 
 }
 .img-area{
-    background-color: rgb(209, 213, 216);
+    background-color: var(--bg-color);
 }
 .profile-photo{
     margin: 18px 0 0 0 ; 
-    background-color: rgb(230, 241, 248);
+    background-color: var(--bg-color);
     padding-top: 20px;
     justify-items: center;
     border-radius: 10px;
@@ -41,7 +42,7 @@ i{
     padding-top: 20px;
 }
 .select-{
-    background-color: rgb(233, 238, 241);
+    background-color: var(--bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(173, 162, 162, 0.2);
     width: 100%;
@@ -49,7 +50,7 @@ i{
 }
 .socialMedia-area {
     margin-top: 20px;
-    background-color: rgb(233, 238, 241);
+    background-color: var(--bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(173, 162, 162, 0.2);
 }
@@ -58,15 +59,15 @@ i{
   margin: 0 10px;
   border-radius: 10px;
 }
-.select- li:hover, .socialMedia-area li:hover{
-  background: #c9d9d9;
+.select- li:hover i, .socialMedia-area li:hover i{
+  color: var(--accent-color-hover);
 }
 .select- i, .socialMedia-area i{
     width: 35px; 
-    color: #ad3333;
+    color: var(--accent-color);
 }
 .select- span, .socialMedia-area span{
-    color: #1d2d25;
+    color: var(--text-color);
 }
 /* .socialMedia-area .fa{
     width: 35px;
@@ -91,12 +92,13 @@ i{
 .info-area-s{
     height: 100%;
     display: grid;
-    background-color: rgb(209, 213, 216);
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 .user-details, .form-info form{
     height: fit-content;
     margin: 18px 0 0 0 ; 
-    background-color: rgb(233, 238, 241);
+    /* background-color: rgb(233, 238, 241); */
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(173, 162, 162, 0.2);
 
