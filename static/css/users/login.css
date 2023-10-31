@@ -1,16 +1,19 @@
 #side-page{
-    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background: rgba(255, 255, 255, 0.15); */
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.27);
     max-width: 1000px;
-    margin-top: 0;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
     padding-top: 0;
     margin-bottom: 30px;
-    height: 89vh;
+    /* height: 89vh; */
       }
     .company-info  ul{
         list-style: none;
@@ -39,20 +42,21 @@
       .wrapperD > *{
         padding: 1em;
       }
-      .company-info{
+      /* .company-info{
         background: #c6c9cd;
         color: azure;
       }
       .company-info h3, .company-info ul{
         text-align: center;
         margin: 0 0 1rem 0;
-        height: 20px;
+      } */
+       
+      /*IDEA:  FORM STYLES */
+      .alert{
+        padding: 0 !important;
+        margin: 0 !important;
+        text-align: center;
       }
-       /*.contact{
-        background: #8d9597;
-      }
-      
-      IDEA:  FORM STYLES */
       .form-infor{
           margin-top: 0;
       }
@@ -78,15 +82,16 @@
         border: 1px solid #c9e6ff;
       }
        form button{
-        background: #c9e6ff;
+        background: var(--accent-color);
         border: 0;
+        color: black;
         text-transform: uppercase;
+        font-weight: 700;
       }
        form button:hover,  form button:focus{
-        background: #92bde7;
-        color: #fff;
+        background: var(--accent-color-hover);
         outline: 0;
-        transition: background-color 2s  ease-out; 
+        transition: background-color 2s  ease-out;
       }
        p input{
           height: 10px;

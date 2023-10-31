@@ -9,6 +9,8 @@
 {% block css %}
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <link rel="stylesheet" href="{% static 'css/users/login.css' %}" type="text/css">
+
+<link rel="stylesheet" href="{% static 'css/contact.css' %}" type="text/css">
 <style>
   /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
@@ -21,23 +23,43 @@
 <section class="s2 user_info ">
   <div id="side-page" class="container">
     <h1 class="brand"><span>Signin Form</span></h1>
-    <div class="wrapper animated bounceInLeft " style="margin-top: 70px;">
-      <div class="company-info" id="bg" style="background-image: url('{% static "
-        images/pexels-thisisengineering-3913025.jpg"%}')";>
+    <div class="wrapper animated bounceInLeft ">
+      <div class="company-info" >
         <h3>{{side_info.name}}</h3>
         <ul>
-          <li>{{side_info.phone_number}}</li>
-          <li>{{side_info.email}}</li>
-          <li>{{side_info.address}}</li>
+          <li>
+            <i class="bi bi-telephone-fill"></i>
+            {{side_info.phone_number}}
+          </li>
+          <li>
+            <i class="bi bi-envelope-at-fill"></i>
+            {{side_info.email}}
+          </li>
+          <li>
+            <i class="bi bi-geo-alt-fill"></i>
+            {{side_info.address}}
+          </li>
+          <li> 
+            <i class="bi bi-whatsapp"></i>
+            <div class="form-group button" style="margin-top: 5px;">
+              <a href="" id='whatsapp-url' target="_blank" style="font-weight: 700;">Contact on Whatsapp</a>
+            </div>
+          </li>
         </ul>
 
       </div>
+      
       <div>
         <div class="form-info">
           <div class="form">
             <form method="post">
               <div>
                 {% csrf_token %}
+                {% if error_message %}
+                <div class="alert alert-danger">
+                    {{ error_message }}
+                </div>
+                {% endif %}
                 {{ form.as_p }}
               </div>
               <div id="f">

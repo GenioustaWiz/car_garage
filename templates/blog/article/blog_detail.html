@@ -53,6 +53,20 @@
 
             <div class="card-text content">
                 {{ blog.content|safe }}
+                <!-- IMPORTANT TO MAKE THEME COLOR CHANGE POSSIBLE FOR THESE BODY HTML CODE-->
+                <script>
+                    // Find all elements with class "des-p-p"
+                    const desPPElements = document.querySelectorAll('.content');
+    
+                    // Iterate through each "des-p-p" element and add the "theme-text" class to its child elements
+                    desPPElements.forEach((element) => {
+                        const childElements = element.querySelectorAll('*');
+                        childElements.forEach((child) => {
+                            child.classList.add('theme-text');
+                        });
+                    });
+                </script>
+              <!-- END IMPORTANT TO MAKE THEME COLOR CHANGE POSSIBLE FOR THESE BODY HTML CODE-->
             </div>
             {% comment %} tags {% endcomment %}
             <div class="tags--"> 

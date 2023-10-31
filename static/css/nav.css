@@ -46,6 +46,10 @@ static/
   height: 17px;
   width: 17px;
 }
+.header__button i{
+  font-size: 30px !important;
+  color: var(--accent-color);
+}
 #logo{
   /* grid-column: 6; */
   margin: 0 auto;
@@ -89,13 +93,16 @@ static/
   color: var(--accent-color) !important;
 }
 .user a{
-  color: white !important;
+  color: var(--accent-color) !important;
   font-weight: 600;
   text-decoration: none;
 }
 .user a:hover{
   color: var(--accent-color-hover) !important;
   background-color: var(--primary-color) !important;
+}
+.user .dropdown-menu a i{
+  width: 24px;
 }
 .nav__links{
   position: fixed;

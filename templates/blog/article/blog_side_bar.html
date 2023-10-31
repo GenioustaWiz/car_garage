@@ -45,7 +45,7 @@
                     $('#search-input').on('input', function () {
                         var query = $(this).val();
                         $.ajax({
-                            url: '/news/blog_search/ajax_search/',
+                            url: '/blog/blog_search/ajax_search/',
                             data: { 'query': query },
                             success: function (data) {
                                 var resultsDiv = $('#search-results');
@@ -76,7 +76,7 @@
                     //the id of the clicked item is retrieved and used to open the blog_detail.
                     $(document).on('click', '.search-result', function () {
                         var articleSlug = $(this).data('slug');
-                        window.location.href = '/news/open-dropeddown-article/' + articleSlug; // Redirect to the blog post detail page
+                        window.location.href = '/blog/open-dropeddown-article/' + articleSlug; // Redirect to the blog post detail page
                         $('#search-results').hide();
                     });
                     //======= end =====
@@ -89,7 +89,7 @@
                 });
             </script>
             <!--==END OF SCRIPT FOR SEARCHING ====-->
-            <form class="search-form"  method="GET" action="/news/articles-available/">
+            <form class="search-form"  method="GET" action="/blog/articles-available/">
                 <div class="form-group">
                     <input type="text" class="form-control" id="search-input" name="query" placeholder="Type a keyword and hit enter">
                     <button type="submit" class="btn"><span class="icon mai-search"></span></button>

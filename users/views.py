@@ -12,6 +12,9 @@ from .forms import *
 # def profile_home(request):
 #     return render(request, 'profile/profile_home2.html',)
 def Login(request):
+    
+    side_info = ContactSidebarCompanyInfo.objects.first()
+    error_message = None
     if request.method == 'POST':
         form = loginpage(request.POST)
         if form.is_valid():
@@ -21,17 +24,23 @@ def Login(request):
             )
             if user is not None:
                 login(request, user)
-            # return redirect('home')
+                return redirect('main_index')
+            else:
+                error_message = "Invalid username or password. Please try again."
+        else:
+            error_message = "Form is not valid. Please check your inputs."
 
     
     form = loginpage()
-    side_info = ContactSidebarCompanyInfo.objects.first()
-    
+    print('sidebar')
+    print(side_info)
     context = {
         'form': form,
         'side_info': side_info,
+        'error_message': error_message,
     }
     return render(request, 'registration/login.html', context)
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST) 

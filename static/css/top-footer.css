@@ -7,6 +7,9 @@ ul{
     padding: 2px 4px;
     border-radius: 4px;
 }
+.top-footer li{
+    list-style: none !important;
+}
 .top-footer a:hover{
     background-color: #433f3fe8;
 }

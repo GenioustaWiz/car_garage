@@ -1,0 +1,28 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+      "builder": "NIXPACKS"
+    },
+    "env": { 
+      "DEBUG": "false"  
+    },
+    "deploy": {
+      "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn car_garage.wsgi",
+      "web": "gunicorn car_garage.wsgi:application",
+      "services": [
+        {
+          "id": "nginx",
+          "name": "Nginx",
+          "docker": {
+            "build": "nginx.Dockerfile",
+            "ports": ["8080:80"],
+            "volumes": [
+              { "type": "static", "value": "/app/static", "path": "/static" },
+              { "type": "static", "value": "/app/media", "path": "/media" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+  

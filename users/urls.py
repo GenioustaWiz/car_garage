@@ -11,7 +11,7 @@ urlpatterns = [
     # path('profile_home/', profile_home, name='profile-home'),
     path('your/profile/', profile, name='profile'),
     path('profile/Edit/', profile_edit, name='profile_edit'),
-    path('login/', Login, name='login'),
+    path('login/', Login, name='signin'),
     
     # ========ADMIN URLS VIEWS=======================
     path('assign_group/<int:user_id>/', assign_user_group, name='assign_user_group'),

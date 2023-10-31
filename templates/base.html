@@ -52,9 +52,7 @@
     {% comment %} END of display messages {% endcomment %}
     <header class="header">
         <button class="header__button" id="btnNav" type="button">
-            <a href="#">
-                <img src="{% static 'images/menu-icon.ico' %}" width="350" alt="Menu Symbols" />
-            </a>
+            <i class="fa-solid fa-bars"></i>
         </button>
         <div id="logo">
             <a href="{% url 'main_index' %}">
@@ -73,11 +71,20 @@
         <div id="navbar_d">
             <div id="links">
                 <a href="{% url 'main_index' %}">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">News</a>
+                <a href="javascript:void(0);" onclick="scrollToSection('#ABOUT')">About</a>
+                <a href="javascript:void(0);" onclick="scrollToSection('#SERVICES')">Services</a>
+                <!--SCRIPT FO OPENING THE MAIN_INDEX 
+                    AND THE SELECTING THE SECTION BELONGING 
+                    TO THE id THAT WAS CLICKED-->
+                <script>
+                    function scrollToSection(sectionId) {
+                        window.location.href = "{% url 'main_index' %}" + sectionId;
+                    }
+                </script>
+                <!-- END OF SCRIPT-->
+                <a href="{% url 'blog:blog_home' %}">Blog</a>
                 {% comment %} <a href="{% url 'project_list' %}">Projects</a> {% endcomment %}
-                <a href="#">Contact</a>
+                <a href="{% url 'contact' %}">Contact</a>
                 {% if request.user.is_authenticated %}
                     <div class="dropdown dashboard">
                         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -98,19 +105,21 @@
 
             <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <img src="{{user.profile.image.url}}" width="40" height="40" class="rounded-circle" alt="Avatar">
+                <img src="{{user.profile.image.url}}" width="30" height="30" class="rounded-circle" alt="Avatar">
             </a>
             <div class="dropdown-menu">
                 <a href="{% url 'profile' %}" class="dropdown-item"><i
                         class="fa fa-user"></i> Profile</a>
                 <!-- <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a> -->
-                <a href="{% url 'password_change' %}" class="dropdown-item"><i class="fa fa-sliders"></i> Change
+                <a href="{% url 'password_change' %}" class="dropdown-item">
+                    <i class="fa fa-solid fa-pen-to-square"></i> Change
                     password</a>
                 <div class="divider dropdown-divider"></div>
-                <a href="{% url 'logout' %}" class="dropdown-item"> Logout</a>
+                <a href="{% url 'logout' %}" class="dropdown-item">
+                    <i class="fa-solid fa-right-from-bracket"></i>Logout</a>
             </div>
             {% else %}
-            <a href="{% url 'login' %}"> <span>SignUp</span> </a>
+            <a href="{% url 'signin' %}"> <span>SignUp</span> </a>
             {%endif %}
 
         </div> 
@@ -126,23 +135,23 @@
                 <i class="fa fa-house"></i>
                 Home
             </a>
-            <a href="#" class="nav__link ">
+            <a href="#ABOUT" class="nav__link ">
                 <i class="fa fa-question"></i>
                 About
             </a>
-            <a href="#" class="nav__link">
+            <a href="#SERVICES" class="nav__link">
                 <i class="fa-solid fa-truck-fast"></i>
                 Services
             </a>
-            <a href="#" class="nav__link">
+            <a href="{% url 'blog:blog_home' %}" class="nav__link">
                 <i class="fa fa-blog"></i>
-                News
+                Blog
             </a>
             {% comment %} <a href="{% url 'project_list' %}" class="nav__link">
                 <i class="fa fa-folder-open" aria-hidden="true"></i>
                 Projects
             </a> {% endcomment %}
-            <a href="#" class="nav__link">
+            <a href="{% url 'contact' %}" class="nav__link">
                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                 Contact
             </a>
@@ -168,8 +177,8 @@
                 Logout
             </a>
             {% else %}
-            <a href="{% url 'login' %}" class="nav__link" > 
-                <i class="fa fa-user-plus" aria-hidden="true"></i>
+            <a href="{% url 'signin' %}" class="nav__link" > 
+                <i class="fa-solid fa-right-from-bracket">
                 Login 
             </a>
             <a href="{% url 'signup' %}" class="nav__link" style="margin-bottom:10px;"> 
