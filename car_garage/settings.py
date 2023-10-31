@@ -21,14 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-p3z=#_sq=8fz4p2$#tgs6d=pl6l_(q^g^b5om493sn3v18yg6p"
+SECRET_KEY = "76f38950-9eab-4703-9288-ced63971d2c6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cargarage-production.up.railway.app']
 
-# CSRF_TRUSTED_ORIGINS = ['https://hospitalmanagementsystemweb-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://cargarage-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
