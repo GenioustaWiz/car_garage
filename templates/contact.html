@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
+{% block head %}
+<title>
   Contact Us
-{% endblock title %}
-
-{% block css %}
+</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <link rel="stylesheet" href="{% static 'css/contact.css' %}" type="text/css">
 <style>
@@ -27,7 +26,7 @@
     width: fit-content;
   }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="s2 contact ">

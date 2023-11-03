@@ -3,8 +3,8 @@
 
 {% load static %}
 
-{% block title %} Blog List Page {% endblock title %}
-{% block css %}
+{% block head %}
+<title> Blog List Page </title>
 {{form.media}}
 <link rel="stylesheet" href="{% static 'css/blogdashboard/author/write_new_article.css' %}"> 
 <style>
@@ -12,7 +12,7 @@
         background-color: azure;
    }
 </style>
-{% endblock css %}
+{% endblock head %}
 {% block content %}
  
 

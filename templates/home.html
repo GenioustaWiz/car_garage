@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} 
+{% block head %}
+<title> 
   Home
-{% endblock title %}
-
-{% block css %}
+</title>
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}" type="text/css">
 
 <style>
@@ -36,7 +35,7 @@
     position: inherit;
   }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class=" description"> <!-- s2 -->

@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{% static 'images/web_tab_image/PnP_Auto_Icon.jpg' %}">
     
-    <title>{% block title %} {% endblock title %}</title>
+    <title> </title>
+    {% block head %} {% endblock head %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,7 +26,7 @@
     {% comment %} <link rel="stylesheet" href="{% static 'css/theme.css' %}" type="text/css"> {% endcomment %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!--  -->
-    {% block css %} {% endblock css %}
+    
 </head>
 
 <body class="preload">

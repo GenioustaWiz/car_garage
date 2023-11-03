@@ -5,8 +5,8 @@
 
 {% load static %}
 
-{% block title %} Main Dashboard Home{% endblock title %}
-{% block css %}
+{% block head %}
+<title> Main Dashboard Home</title>
 <link rel="stylesheet" href="{% static 'css/blogdashboard/dashboard_home.css' %}">
 <link rel="stylesheet" href="{% static 'css/blogdashboard/common.css' %}">
 <style>
@@ -23,7 +23,7 @@
         color: #000;/* Set the text color for even rows (optional) */
     }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 {% comment %} <!-- home --> {% endcomment %}

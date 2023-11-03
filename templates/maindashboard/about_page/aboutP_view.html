@@ -1,11 +1,8 @@
 {% extends 'maindashboard/dashboard_base.html' %}
 {% load static %}
 
-{% block title %} 
-  About Us
-{% endblock title %}
-
-{% block css %}
+{% block head %}
+<title>About Us</title>
 <link rel="stylesheet" href="{% static 'css/description.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/about.css' %}" type="text/css">
 {% comment %} <link rel="stylesheet" href="{% static 'css/extra.css' %}" type="text/css"> {% endcomment %}
@@ -20,7 +17,7 @@
     top: -10px;
   }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
  <section class=" description"> <!-- s2 -->

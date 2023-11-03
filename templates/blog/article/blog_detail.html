@@ -6,15 +6,18 @@
 
 {% load static %}   
 
-{% block title %} Blog Detail {% endblock title %}
-{% block css %}
+{% comment %} <title> Blog Detail </title> {% endcomment %}
+{% block head %}
+<title>{{ blog.title }} - P&P AUTO</title>
+<meta name="description" content="{{ blog.get_meta_description }}">
+    <!-- Other meta tags, styles, and scripts... -->
 <link rel="stylesheet" href="{% static 'css/blog/blog_detail.css' %}">
 <link rel="stylesheet" href="{% static 'css/blog/blog_home.css' %}">
 <link rel="stylesheet" href="{% static 'css/blog/blog.css' %}">
 <style>
  
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class=" post-list body-container">

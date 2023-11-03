@@ -1,11 +1,10 @@
 {% extends 'maindashboard/dashboard_base.html' %}
 {% load static %}
 
-{% block title %} 
+{% block head %}
+<title> 
     Services for {{ category.category_name }}
-{% endblock title %}
-
-{% block css %}
+</title>
 <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/blogdashboard/author/write_new_article.css' %}"> 
 
@@ -26,7 +25,7 @@
         color: black !important;
     }
   </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="services item2 section write-A-page"> <!-- s2 -->

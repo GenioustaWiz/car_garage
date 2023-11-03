@@ -4,12 +4,13 @@
 
 {% load static %}
 
-{% block title %} Articles {% endblock title %}
-{% block css %}
+
+{% block head %}
+<title> Articles </title>
 <link rel="stylesheet" href="{% static 'css/blog/blog_home.css' %}">
 {% comment %} <link rel="stylesheet" href="{% static 'css/blog/blog_detail.css' %}"> {% endcomment %}
 
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="post-list body-container">

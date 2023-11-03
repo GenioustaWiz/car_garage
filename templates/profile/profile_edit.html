@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-<title>Profile</title>
-{% endblock title %}
-
-{% block css %}
+{% block head %}
+<title>Profile Edit</title>
 <link rel="stylesheet" href="{% static 'css/users/profile_home.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/users/profile.css' %}">
 <link rel="stylesheet" href="{% static 'css/users/login.css' %}" type="text/css">
@@ -29,7 +26,7 @@
     padding: 0.36em;
   }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="s2 profile">

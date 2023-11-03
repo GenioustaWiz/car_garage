@@ -2,11 +2,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} 
-  Services
-{% endblock title %}
 
-{% block css %}
+
+{% block head %}
+<title> 
+  Services
+</title>
 <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
 <style>
     .services{
@@ -35,7 +36,7 @@
         position: inherit;
     }
   </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="services"> <!-- s2 -->

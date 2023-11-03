@@ -1,18 +1,15 @@
 {% extends 'maindashboard/dashboard_base.html'  %}
 {% load static %}
 
-{% block title %}
-  Contact Us
-{% endblock title %}
-
-{% block css %}
+{% block head %}
+<title>Contact Us</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <link rel="stylesheet" href="{% static 'css/description.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/contact.css' %}" type="text/css">
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
 </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 

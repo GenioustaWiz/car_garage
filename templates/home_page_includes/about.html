@@ -1,11 +1,11 @@
 
 {% load static %}
 
-{% comment %} {% block title %} 
+{% comment %} <title> 
   About Us
-{% endblock title %} {% endcomment %}
+</title> {% endcomment %}
 
-{% block css %}
+{% block head %}
 <link rel="stylesheet" href="{% static 'css/description.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/about.css' %}" type="text/css">
 {% comment %} <link rel="stylesheet" href="{% static 'css/extra.css' %}" type="text/css"> {% endcomment %}
@@ -17,7 +17,7 @@
     list-style-type: square;
   }
 </style>
-{% endblock css %}
+{% endblock head %}
 
  <section class=" description" id="ABOUT"> <!-- s2 -->
     <div id="description-page"  class=" container-xxl">

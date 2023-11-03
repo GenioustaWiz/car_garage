@@ -80,6 +80,9 @@ class Blog(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:blog_detail', args=[str(self.slug)])
+    def get_meta_description(self):
+        # Extract the first 150 characters from the content as the meta description.
+        return self.content[:150]
 
     def publish(self):
         self.published_date = timezone.now()

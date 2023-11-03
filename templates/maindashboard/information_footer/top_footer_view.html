@@ -4,8 +4,8 @@
 
 {% load static %}
 
-{% block title %} Information Footer {% endblock title %}
-{% block css %}
+{% block head %}
+<title> Information Footer </title>
 {{form.media}}
 <link rel="stylesheet" href="{% static 'css/blogdashboard/author/write_new_article.css' %}"> 
 {% comment %} <link rel="stylesheet" href="{% static 'css/top-footer.css' %}" type="text/css"> {% endcomment %}
@@ -47,7 +47,7 @@
         color: red;
    }
 </style>
-{% endblock css %}
+{% endblock head %}
 {% block content %}
  
 <section class="item2 section write-A-page">

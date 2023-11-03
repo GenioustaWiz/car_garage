@@ -2,12 +2,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block title %} 
+{% block head %}
+<title> 
   Services
-{% endblock title %}
-
-{% block css %}
+</title>
 {{ form.media }}
 <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
 <style>
@@ -40,7 +38,7 @@
         text-decoration:none;
     }
   </style>
-{% endblock css %}
+{% endblock head %}
 
 {% block content %}
 <section class="services"> <!-- s2 -->

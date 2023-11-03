@@ -10,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Geniousta">
     <meta name="keywords" content="Web, development, Blog, Django-Blog, Django-app, ">
-    <title>{% block title%} {% endblock title%}</title>
-    
+    {% block head%} {% endblock head%}
     <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -31,7 +30,7 @@
     <link rel="stylesheet" href="{% static 'css/blogdashboard/dashboard_sidebar.css' %}">
     
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    {% block css%} {% endblock css%}
+    
 </head>
 
 <body class="preload">

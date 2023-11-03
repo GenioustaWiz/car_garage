@@ -1,11 +1,11 @@
 
 {% load static %}
 
-{% comment %} {% block title %} 
+{% comment %} <title> 
   Services
-{% endblock title %} {% endcomment %}
+</title> {% endcomment %}
 
-{% block css %}
+{% block head %}
 {{ form.media }}
 <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
 <style>
@@ -13,7 +13,7 @@
         text-decoration:none;
     }
 </style>
-{% endblock css %}
+{% endblock head %}
 
 <section class="services " id="SERVICES"> <!-- s2 -->
     <div class="div1">
