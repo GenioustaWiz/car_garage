@@ -131,14 +131,14 @@
 
     <nav class="nav">
         <div class="nav__links">
-            <a href="{% url 'main_index' %}" class="nav__link nav__link--active">
+            <a href="{% url 'main_index' %}" class="nav__link nav__link--active" >
                 <i class="fa fa-house"></i>
                 Home
             </a>
-            <a href="javascript:void(0);" onclick="scrollToSection('#ABOUT')">
+            <a href="javascript:void(0);" onclick="scrollToSection('#ABOUT')" class="nav__link">
                 <i class="fa fa-question"></i>About
             </a>
-            <a href="javascript:void(0);" onclick="scrollToSection('#SERVICES')">
+            <a href="javascript:void(0);" onclick="scrollToSection('#SERVICES')" class="nav__link">
                 <i class="fa-solid fa-truck-fast"></i>Services
             </a>
             <a href="{% url 'blog:blog_home' %}" class="nav__link">
