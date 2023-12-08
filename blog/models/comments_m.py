@@ -1,11 +1,11 @@
 
 from django.db import models
-from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
 
 from .article_m import Blog
+from users.models import User
 
 class Comment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')

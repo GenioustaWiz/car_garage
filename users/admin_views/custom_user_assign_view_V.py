@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, Group
+from users.models import User
 from ..admin_forms.custom_user_assign_form import GroupAssignmentForm
 
 @login_required

@@ -1,6 +1,5 @@
 
 from django.db import models
-from django.contrib.auth.models import User
 # from django_quill.fields import QuillField
 from tinymce.models import HTMLField
 from django.template.defaultfilters import slugify
@@ -12,6 +11,7 @@ from taggit.managers import TaggableManager
 
 from .categories_n_babies_m import *
 # from .comments_m import Comment
+from users.models import User
 
 
 class Blog(models.Model):

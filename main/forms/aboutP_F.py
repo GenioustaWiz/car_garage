@@ -15,7 +15,7 @@ class AboutPageForm(forms.ModelForm):
 #         model = AboutList
 #         fields = ['title', 'image', 'desc']
 
-from users.models import Profile
+# from users.models import User
 class AboutListForm(forms.ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super(AboutListForm, self).__init__(*args, **kwargs)

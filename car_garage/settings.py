@@ -32,13 +32,15 @@ CSRF_TRUSTED_ORIGINS = ['https://cargarage-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.AccountsConfig',
+    'users',
     'main',
     'services',
     'blog',
     'visitors_counter',
     'contact_us',
-    
+    # for security enforcement
+    # 'axes', #remember to un comment other parts of the code for AXES
+    # =========
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +54,80 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_countries',
     'taggit',
+    # Django Allauth 
+    'django.contrib.sites',  # make sure sites is included
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth_2fa',
+      # the social providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    # end django-allauth
 ]
+#====pip install django-axes for sec==
+# AXES_FAILURE_LIMIT = 5
+# AXES_LOCK_OUT_AT_FAILURE = True
+# AXES_LOCKOUT_PARAMETERS = [
+#         ["ip_address", 
+#         "user_agent"]
+#     ]
+# ==========END==============
+
+# DJango  ALLAUTH
+AUTH_USER_MODEL = "users.User"
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile','email'],
+        'AUTH_PARAMS': {'access_type': 'offline'},
+        'OAUTH_PKCE_ENABLED': True,
+    },
+    'linkedin': {
+        'HEADERS': {
+            'x-li-src': 'msdk'
+        },
+        'SCOPE': [
+            'openid',
+        ],
+        # 'PROFILE_FIELDS': [
+        #     'id',
+        #     'first-name',
+        #     'last-name',
+        #     'email-address',
+        #     'picture-url',
+        #     'public-profile-url',
+        # ]
+    },
+    'github': {
+        'SCOPE': [
+            'user',
+            # 'repo',
+            'read:org',
+        ],
+    },
+}
+
+SITE_ID = 1
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+    # EMAIL_BACKEND so allauth can proceed to send confirmation emails
+    # ONLY for development/testing use console 
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+    # Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' 
+# Enable two-factor authentication
+# ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
+ACCOUNT_FORMS = {
+    'update_account': 'users.forms.UserUpdateForm',  # Point to your custom form
+}
+ACCOUNT_SET_PASSWORD_REDIRECT_URL = "/your/profile/"
+# End DJango  ALLAUTH
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +140,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # New Added
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+    # AxesMiddleware should be the last middleware in the MIDDLEWARE list.
+    # It only formats user lockout messages and renders Axes lockout responses
+    # on failed user authentication attempts from login views.
+    # If you do not want Axes to override the authentication response
+    # you can skip installing the middleware and use your own views.
+
+    # 'axes.middleware.AxesMiddleware',
 ]
 
 
@@ -81,6 +164,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # this part is for the user_profile, for mostly sending the user Image to the header
+                'users.context_processors.user_info',
+                
             ],
         },
     },

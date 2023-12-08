@@ -31,9 +31,9 @@
             {% if  profiles %}
             {% for profile in profiles %}
             <div class="about--list">
-                <a href="{% url 'user_detail' user_id=profile.user.id %}">
+                <a href="{% url 'user_detail' user_id=profile.id %}">
                     <img src="{{profile.image.url}}" width="200" height="200" alt="">
-                    <div class="bottom-name">{{ profile.user.username }}
+                    <div class="bottom-name">{{ profile.username }}
                     </div>
                 </a>
             </div>

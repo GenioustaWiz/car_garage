@@ -21,3 +21,9 @@ beautifulsoup4==4.12.2
 django-cleanup==6.0.0
 django-countries==7.3.2
 django-debug-toolbar==4.0.0
+
+# users
+django-allauth==0.58.2
+    # for security reduce chances of bruteforce
+    # activate for production
+django-axes
