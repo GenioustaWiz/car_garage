@@ -120,7 +120,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
     # ONLY for development/testing use console 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
     # Make email verification mandatory to avoid junk email accounts
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' 
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory' 
 # Enable two-factor authentication
 # ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
 ACCOUNT_FORMS = {
