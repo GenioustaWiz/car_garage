@@ -2,6 +2,7 @@ from django.contrib.admin.models import LogEntry, ADDITION, CHANGE, DELETION
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import Group, Permission
 from allauth.socialaccount.models import SocialAccount
 from django.dispatch import receiver
@@ -125,7 +126,9 @@ def user_edit(request, user_id):
 
     return render(request, 'maindashboard/users_admin/user_edit.html', context)
 
-
+@login_required
+#only users authorized to view users profile will get acces to this
+@permission_required('auth.view_user', raise_exception=True) 
 def custom_admin_view(request, user_id):
     user = get_object_or_404(User, id=user_id)
 

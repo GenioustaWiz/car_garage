@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from ..models import Visit
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+@login_required
+@staff_member_required
 def visit_list(request):
     total_visitors, total_visits = Visit.get_total_visitors_and_visits()
     visitors = Visit.objects.all()

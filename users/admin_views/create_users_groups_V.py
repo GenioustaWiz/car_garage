@@ -6,7 +6,8 @@ from django.contrib.auth.models import Permission, Group
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..admin_forms.add_group_forms import *
-
+@login_required
+@staff_member_required
 def group_list_view(request):
     groups = Group.objects.all()
 
@@ -35,7 +36,8 @@ def group_list_view(request):
     context = {'groups': groups}
 
     return render(request, 'maindashboard/users_admin/groups/group_list.html', context)
-    
+@login_required
+@staff_member_required
 def group_detail(request, pk):
     group = get_object_or_404(Group, pk=pk)
     queryset=group.permissions.all()
@@ -46,6 +48,8 @@ def group_detail(request, pk):
         'permissions': queryset,  # Pass the queryset to the context
         }
     return render(request, 'maindashboard/users_admin/groups/group_detail.html', context)
+@login_required
+@staff_member_required
 def add_group_(request):
     if request.method == 'POST':
         print("check if permission")
@@ -84,6 +88,8 @@ def add_group_(request):
     # Add this return statement for non-POST requests
     # return HttpResponse("This is a non-POST request response.")
 
+@login_required
+@staff_member_required
 def add_group(request, pk=None):
     if pk is not None:
         group = get_object_or_404(Group, pk=pk)
