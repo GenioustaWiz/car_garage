@@ -5,6 +5,9 @@ from django.views.generic import ListView
 from django.contrib.auth.models import Permission, Group
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
 from ..admin_forms.add_group_forms import *
 @login_required
 @staff_member_required
