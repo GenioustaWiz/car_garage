@@ -97,6 +97,13 @@ static/
   font-weight: 600;
   text-decoration: none;
 }
+.user .dropdown-menu h4{
+  color: var(--accent-color) !important;
+  font-weight: 700;
+}
+.user .dropdown-menu h4:hover{
+  background-color: var(--primary-color) !important;
+}
 .user a:hover{
   color: var(--accent-color-hover) !important;
   background-color: var(--primary-color) !important;

@@ -128,10 +128,10 @@ i{
     justify-content: center;
     gap: 15px;
     padding: 0;
-    margin: 5px 0 30px 0 ;
-    background-color: rgb(209, 213, 216);
+    margin: 20px 0 30px 0 ;
+    background-color: var(--bg-color);
     border-radius: 10px;
-    box-shadow: 0 4px 30px rgba(173, 162, 162, 0.2);
+    box-shadow: 0 0 10px rgba(173, 162, 162, 0.2);
 
   }
   .hr-dashed{
@@ -149,7 +149,7 @@ i{
     grid-template-columns: 40% 60%;
     justify-items: center;
     align-items: center;
-    background-color: rgb(233, 238, 241);
+    background-color: var(--bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(173, 162, 162, 0.2);
 
@@ -196,7 +196,6 @@ i{
         grid-template-columns: repeat(2, auto);
         grid-template-rows: 45% 45%;
         justify-content: stretch;
-        margin-bottom: 30px;
   }
   .user-form{
     display: grid;

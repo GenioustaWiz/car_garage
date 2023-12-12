@@ -13,9 +13,6 @@ from users.forms import *
 from django.views.generic import TemplateView, View
 from allauth.account.views import LogoutView
 
-# Create your views here.
-def home(request):
-    return render(request, 'home.html',)
 
 # Update it here
 @login_required
@@ -102,4 +99,4 @@ class DeleteAccountView(TemplateView):
         request.user.delete()
 
         messages.success(request, 'Your account has been deleted.')
-        return redirect("home")  
+        return redirect("main_index")  

@@ -42,7 +42,7 @@
 }
 
 .logo {
-  font-size: 30px !important;
+  font-size: 18px !important;
 }
 
 .logo span {
@@ -209,5 +209,7 @@
     justify-content: right;
     margin-right: 4px;
   }
-
+  .logo {
+    font-size: 30px !important;
+  }
 }
