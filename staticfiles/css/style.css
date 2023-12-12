@@ -42,6 +42,11 @@ static/
      appeating and disappearing fast when page is refreshed */
     transition: none !important;
   }
+  #preloader{
+    background-color: var(--bg-color) ;
+    height: 100%;
+    width: 100%;
+  }
   /* main{
     height: 89vh;
   } */
