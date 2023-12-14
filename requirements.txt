@@ -27,3 +27,9 @@ django-allauth==0.58.2
     # for security reduce chances of bruteforce
     # activate for production
 django-axes
+
+# for .env file loading mostly social account settings
+    # import in settings
+python-decouple
+    # import in manage.py
+python-dotenv

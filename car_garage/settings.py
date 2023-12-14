@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -102,11 +103,14 @@ SOCIALACCOUNT_PROVIDERS = {
         # ]
     },
     'github': {
+        'client_id': config('GITHUB_CLIENT_ID'),
+        'secret': config('GITHUB_SECRET'),
         'SCOPE': [
             'user',
             # 'repo',
             'read:org',
         ],
+        'redirect_url': 'https://cargarage-production.up.railway.app/accounts/github/login/callback/',
     },
 }
 
@@ -127,6 +131,12 @@ ACCOUNT_FORMS = {
     'update_account': 'users.forms.UserUpdateForm',  # Point to your custom form
 }
 ACCOUNT_SET_PASSWORD_REDIRECT_URL = "/your/profile/"
+
+SOCIALACCOUNT_PIPELINE = (
+    'socialaccount.pipeline.social.social_account',
+    # ... other pipeline steps ...
+)
+
 # End DJango  ALLAUTH
 
 MIDDLEWARE = [
