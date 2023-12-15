@@ -43,9 +43,9 @@ static/
     transition: none !important;
   }
   #preloader{
-    background-color: var(--bg-color) ;
-    height: 100%;
-    width: 100%;
+    background: white ;
+    height: 100vh;
+    width: 100vw;
   }
   /* main{
     height: 89vh;

@@ -32,6 +32,11 @@ ALLOWED_HOSTS = ['cargarage-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://cargarage-production.up.railway.app']
 # Application definition
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
 INSTALLED_APPS = [
     'users',
     'main',
@@ -68,7 +73,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.linkedin_oauth2',
     # end django-allauth
-]
+] 
 #====pip install django-axes for sec==
 # AXES_FAILURE_LIMIT = 5
 # AXES_LOCK_OUT_AT_FAILURE = True
@@ -82,9 +87,13 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = "users.User"
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+        'client_id': config('GOOGLE_CLIENT_ID'),
+        'secret': config('GOOGLE_SECRET'),
+        'key': '',
         'SCOPE': ['profile','email'],
         'AUTH_PARAMS': {'access_type': 'offline'},
         'OAUTH_PKCE_ENABLED': True,
+        'redirect_url': 'https://cargarage-production.up.railway.app/accounts/github/login/callback/',  
     },
     'linkedin': {
         'HEADERS': {
@@ -105,6 +114,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'client_id': config('GITHUB_CLIENT_ID'),
         'secret': config('GITHUB_SECRET'),
+        'key': '',
         'SCOPE': [
             'user',
             # 'repo',
