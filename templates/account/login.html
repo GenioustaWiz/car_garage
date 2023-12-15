@@ -80,9 +80,9 @@
             <hr>
             <p class="text-center" style="font-weight: 700;">Or use a third-party</p>
               {# User is not logged in, display social login options #}
-              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-              <!--{#{% include "socialaccount/snippets/login_extra.html" %}#}
-              <ul class="socialaccounts">
+              {#{% include "socialaccount/snippets/provider_list.html" with process="login" %}#}
+              {% include "socialaccount/snippets/login_extra.html" %}
+              <!--<ul class="socialaccounts">
                 <li>
                     <a title="GitHub" href="/accounts/github/login/?process=login">
                         <i class="fa fa-brands fa-github"></i>
@@ -90,13 +90,13 @@
                     </a>
                 </li>
                 <li>
-                    <a title="Google" href="">
+                    <a title="Google" href="/accounts/google/login/?process=login">
                         <i class=" fa fa-brands fa-google"></i>
                         <h5> Google </h5>
                     </a>
                 </li>-->
                  <!-- <li>
-                    <a title="Facebook" href="">
+                    <a title="Facebook" href="/accounts/facebook/login/?process=login">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                 </li> 
@@ -105,8 +105,8 @@
                         <i class="fa-brands fa-linkedin"></i>
 
                     </a>
-                </li>  -->
-              </ul>
+                </li>  
+              </ul>-->
           </div>
         </div>
       </div>
